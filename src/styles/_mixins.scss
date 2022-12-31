@@ -1,0 +1,53 @@
+@mixin flex($direction) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: $direction;
+}
+
+@mixin flex__justify-start($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	justify-content: flex-start;
+}
+
+@mixin flex__justify-between($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	justify-content: space-between;
+}
+
+@mixin flex__justify-around($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	justify-content: space-around;
+}
+
+@mixin flex__justify-evenly($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	justify-content: space-evenly;
+}
+
+@mixin flex__justify-end($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	justify-content: flex-end;
+}
+
+@mixin flex__align-start($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	align-items: flex-start;
+}
+@mixin flex__align-baseline($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	align-items: baseline;
+}
+
+@mixin flex__align-end($gap, $direction) {
+	@include flex($direction);
+	gap: $gap;
+	align-items: flex-end;
+}

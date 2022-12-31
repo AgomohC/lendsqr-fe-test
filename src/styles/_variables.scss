@@ -1,0 +1,13 @@
+$font-weights: (
+	regular: 400,
+	medium: 500,
+	large: 600,
+	xl: 700,
+);
+@function weight($weight-name) {
+	@return map-get($map: font-weight, $key: $weight-name);
+}
+
+// colors
+$primary-color: #39cdcc;
+$secondary-color: #213f7d;
