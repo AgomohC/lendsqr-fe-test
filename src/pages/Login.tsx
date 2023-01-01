@@ -1,5 +1,14 @@
+import Input from "../components/Input"
+
 const Login = () => {
-	return <div>Login</div>
+	return (
+		<Input
+			placeholder='enter'
+			type='password'
+			label='username'
+			// isAuth
+		/>
+	)
 }
 
 export default Login
