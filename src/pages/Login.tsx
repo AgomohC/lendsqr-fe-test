@@ -1,13 +1,17 @@
 import Input from "../components/Input"
+import InputWithSearch from "../components/InputWithSearch"
 
 const Login = () => {
 	return (
-		<Input
-			placeholder='enter'
-			type='password'
-			label='username'
-			// isAuth
-		/>
+		<>
+			<Input
+				placeholder='enter'
+				type='text'
+				label='username'
+				// isAuth
+			/>
+			<InputWithSearch placeholder='enter' />
+		</>
 	)
 }
 

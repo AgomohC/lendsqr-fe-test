@@ -24,13 +24,11 @@ const Input = ({ placeholder, type, label, isAuth }: InputProps) => {
 				<input
 					type={modifiedType(type)}
 					placeholder={placeholder}
-					className={`input-cont__container__input ${
-						!isAuth ? "input-cont__container__input--dashboard" : ""
-					}`}
+					className={`input-cont__input ${isAuth ? "input-cont__input--auth" : ""}`}
 				/>
 				{type == "password" ? (
 					<p
-						className='input-cont__container__show'
+						className='input-cont__show'
 						onClick={() => setShowPassword(!showPassword)}
 					>
 						Show
