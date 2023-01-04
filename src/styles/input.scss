@@ -67,6 +67,11 @@
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 	}
+	&__icon {
+		position: absolute;
+		right: 20.64px;
+		cursor: pointer;
+	}
 }
 
 .search-cont {

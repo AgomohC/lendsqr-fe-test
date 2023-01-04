@@ -6,7 +6,7 @@ const Login = () => {
 		<>
 			<Input
 				placeholder='enter'
-				type='text'
+				type='select'
 				label='username'
 				// isAuth
 			/>
