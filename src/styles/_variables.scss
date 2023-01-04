@@ -1,10 +1,4 @@
-// Fonts
-@font-face {
-	font-family: "Avenir Next";
-	src: url("../assets/fonts/avenir_next_font-webfont.woff2") format("woff2"),
-		url("../assets/fonts/avenir_next_font-webfont.woff") format("woff");
-}
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
 
 $font-weights: (
 	"regular": 400,

@@ -1,0 +1,108 @@
+@import "./mixins";
+@import "./variables";
+@import "./resets";
+
+.login {
+	min-height: 100%;
+	height: 100vh;
+	min-width: 100%;
+	display: flex;
+	justify-content: center;
+
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-content: space-between;
+		width: 100%;
+	}
+	&__images {
+		@include flex__align-start(139px, column);
+		padding-left: 67px;
+		img {
+			object-fit: cover;
+			height: auto;
+			width: 100%;
+		}
+	}
+	&__form {
+		min-height: 100%;
+		box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+		padding: 0 100px;
+		align-items: stretch;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+	&__form-header {
+		@include flex__justify-start(10px, column);
+		align-items: flex-start;
+		h1 {
+			font-family: chooseFont("Montserrat");
+			font-weight: weight(xl);
+			font-size: 40px;
+			line-height: 55px;
+			letter-spacing: -0.04em;
+			color: $secondary-color;
+		}
+		h2 {
+			font-family: chooseFont("Montserrat");
+			font-weight: weight(normal);
+			font-size: 20px;
+			line-height: 27px;
+			color: $gray-main;
+		}
+	}
+	&__input-fields {
+		@include flex__justify-start(24px, column);
+		margin-top: 60px;
+		align-items: flex-start;
+		a {
+			color: $primary-color;
+			text-transform: uppercase;
+			cursor: pointer;
+			text-decoration: none;
+			font-family: chooseFont("Montserrat");
+			font-weight: weight(large);
+			font-size: 12px;
+			line-height: 16px;
+			letter-spacing: 0.1em;
+		}
+	}
+	&__button {
+		background: $primary-color;
+		border-radius: 8px;
+		width: 100%;
+		border: none;
+		outline: none;
+		padding: 14px 0;
+		text-transform: uppercase;
+		color: #ffffff;
+		margin-top: 30px;
+		font-family: chooseFont("Montserrat");
+		font-weight: weight(large);
+		font-size: 14px;
+		line-height: 19px;
+		text-align: center;
+		letter-spacing: 0.1em;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.login__container {
+		display: flex;
+		justify-content: center;
+	}
+	.login__images {
+		display: none;
+	}
+	.login__form {
+		width: min(85%, 500px);
+		box-shadow: none;
+		padding: 0;
+	}
+}
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+	.login__form {
+		padding: 0 50px;
+	}
+}

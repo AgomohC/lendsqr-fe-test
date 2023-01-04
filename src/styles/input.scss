@@ -48,7 +48,7 @@
 			height: 50px;
 		}
 		&--auth::placeholder {
-			font-family: chooseFont("Avenir Next");
+			font-family: chooseFont("Montserrat");
 			line-height: 19px;
 			opacity: 0.6;
 		}
@@ -59,7 +59,7 @@
 		right: 18px;
 		cursor: pointer;
 		color: $primary-color;
-		font-family: chooseFont("Avenir Next");
+		font-family: chooseFont("Montserrat");
 		font-weight: weight(large);
 		font-size: 12px;
 		line-height: 1rem;
