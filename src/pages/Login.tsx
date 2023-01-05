@@ -40,7 +40,12 @@ const Login = () => {
 
 						<Link to={"#"}>forgot password</Link>
 					</div>
-					<button className='login__button'>log in</button>
+					<button
+						className='login__button'
+						onClick={() => navigate("/dashboard")}
+					>
+						log in
+					</button>
 				</div>
 			</div>
 		</div>
