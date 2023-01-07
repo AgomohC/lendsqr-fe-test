@@ -1,4 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
 import { ReactComponent as Search } from "../assets/icons/search.svg"
 import "../styles/input.scss"
 import { useEffect } from "react"

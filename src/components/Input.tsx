@@ -1,7 +1,5 @@
 import "../styles/input.scss"
 import { useState } from "react"
-
-/// <reference types="vite-plugin-svgr/client" />
 import { ReactComponent as Arrow } from "../assets/icons/arrow.svg"
 import { ReactComponent as Calender } from "../assets/icons/calendar.svg"
 

@@ -1,0 +1,111 @@
+@import "./mixins";
+@import "./variables";
+@import "./resets";
+
+.aside {
+	width: 283px;
+	left: 0px;
+	top: 0px;
+	position: fixed;
+	height: 100%;
+	z-index: 999;
+	background: #ffffff;
+	padding-top: 108px;
+	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+	overflow-x: hidden;
+	overflow-y: auto;
+	transition: 0.3s all ease-in-out;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&__heading {
+		padding: 10px 30px;
+		@include flex__justify-start(10px, row);
+		opacity: 0.6;
+		margin-top: 41px;
+		cursor: pointer;
+		&--active {
+			opacity: 1;
+			@extend .aside__heading;
+			margin-top: 39px;
+		}
+		h1 {
+			color: $secondary-color;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(regular);
+			font-size: 16px;
+			line-height: 19px;
+		}
+	}
+	&__block {
+		margin-top: 41px;
+		&-title {
+			text-transform: capitalize;
+			color: $gray-main;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(medium);
+			font-size: 12px;
+			line-height: 14px;
+			padding-left: 30px;
+		}
+		&:is(:last-child) {
+			margin-bottom: 24px;
+		}
+	}
+	&__links {
+		@include flex__justify-start(10px, column);
+		align-items: flex-start;
+		margin-top: 10px;
+	}
+	&__link {
+		padding: 10px 30px;
+		@include flex__justify-start(10px, row);
+		opacity: 0.6;
+		text-decoration: none;
+		width: 100%;
+		h3 {
+			font-size: 16px;
+			line-height: 19px;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(regular);
+			color: $secondary-color;
+		}
+		&--active {
+			@extend .aside__link;
+			opacity: 1;
+			background: rgba($primary-color, 0.06);
+			border-left: 3px solid $primary-color;
+		}
+		&:hover {
+			background: rgba($primary-color, 0.06);
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.aside {
+		width: fit-content;
+		padding-top: 84px;
+
+		&__heading {
+			padding: 10px 10px;
+			h1 {
+				display: none;
+			}
+		}
+		&__block-title {
+			padding: 10px;
+			display: none;
+		}
+		&__link {
+			padding: 10px;
+
+			h3 {
+				display: none;
+			}
+		}
+	}
+}

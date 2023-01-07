@@ -12,6 +12,7 @@
 	@include flex__justify-between(0, row);
 	box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
 	padding: 30px;
+	z-index: 1000;
 	&__logo-cont {
 		height: auto;
 		width: 283px;

@@ -1,7 +1,5 @@
 import InputWithSearch from "./InputWithSearch"
 import "../styles/header.scss"
-
-/// <reference types="vite-plugin-svgr/client" />
 import { ReactComponent as Notification } from "../assets/icons/notification.svg"
 import { ReactComponent as Logo } from "../assets/icons/logo.svg"
 import { ReactComponent as Arrow } from "../assets/icons/filled-arrow.svg"
