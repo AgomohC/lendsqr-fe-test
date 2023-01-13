@@ -2,7 +2,7 @@ import { routes } from "../utils/route-details"
 import type { RouteGroups } from "../utils/route-details"
 import organization from "../assets/icons/organization.svg"
 import home from "../assets/icons/home.svg"
-import { ReactComponent as Arrow } from "../assets/icons/arrow.svg"
+import arrow from "../assets/icons/arrow.svg"
 import "../styles/routes.scss"
 import { Link, useLocation } from "react-router-dom"
 
@@ -19,6 +19,7 @@ const Links = ({ links, location }: { links: RouteGroups; location: string }) =>
 							to={link}
 							key={name}
 							className={`aside__link${link === location ? "--active" : ""}`}
+							title={name}
 						>
 							<img
 								src={icon}
@@ -36,15 +37,24 @@ const Sidebar = () => {
 	const { pathname } = useLocation()
 	return (
 		<aside className='aside'>
-			<div className='aside__heading--active'>
+			<div
+				className='aside__heading--active'
+				title='Switch Organization'
+			>
 				<img
 					src={organization}
 					alt=''
 				/>
 				<h1>Switch Organization</h1>
-				<Arrow />
+				<img
+					src={arrow}
+					alt=''
+				/>
 			</div>
-			<div className='aside__heading'>
+			<div
+				className='aside__heading'
+				title='Dashboard'
+			>
 				<img
 					src={home}
 					alt=''
