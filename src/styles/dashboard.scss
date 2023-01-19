@@ -1,0 +1,27 @@
+@import "./mixins";
+@import "./variables";
+@import "./resets";
+
+.layout {
+	position: absolute;
+	left: 283px;
+	top: 108px;
+	padding: 0 60px;
+	&__heading {
+		margin-top: 60px;
+
+		font-family: chooseFont("Work Sans");
+		font-weight: weight(medium);
+		font-size: 24px;
+		line-height: 28px;
+		color: $secondary-color;
+	}
+}
+@media screen and (max-width: 768px) {
+	.layout {
+		left: 40px;
+		padding: 0 30px;
+		&__heading {
+		}
+	}
+}
