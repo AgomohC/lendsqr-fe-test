@@ -17,7 +17,9 @@
 	transition: 0.3s all ease-in-out;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-
+	&__logo-cont {
+		padding: 10px 30px;
+	}
 	&::-webkit-scrollbar {
 		display: none;
 	}
@@ -88,8 +90,10 @@
 @media screen and (max-width: 768px) {
 	.aside {
 		width: fit-content;
-		padding-top: 84px;
-
+		padding-top: 58px;
+		&__logo-cont {
+			display: none;
+		}
 		&__heading {
 			padding: 10px 10px;
 			h1 {

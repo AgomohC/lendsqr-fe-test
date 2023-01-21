@@ -7,9 +7,18 @@
 	left: 283px;
 	top: 108px;
 	padding: 0 60px;
+	background: #fbfbfb;
+	width: calc(100% - 283px);
+	min-width: 960px;
+	height: fit-content;
+	min-height: 100vh;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 	&__heading {
 		margin-top: 60px;
-
 		font-family: chooseFont("Work Sans");
 		font-weight: weight(medium);
 		font-size: 24px;
@@ -17,8 +26,10 @@
 		color: $secondary-color;
 	}
 }
+
 @media screen and (max-width: 768px) {
 	.layout {
+		top: 84px;
 		left: 40px;
 		padding: 0 30px;
 		&__heading {
