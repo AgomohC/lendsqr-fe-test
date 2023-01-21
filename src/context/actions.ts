@@ -1,0 +1,6 @@
+export const SET_ALL_USERS = "SET ALL USERS"
+export const SET_SINGLE_USER = "SET SINGLE_USER"
+export const SET_LOADING = "SET_LOADING"
+export const STOP_LOADING = "STOP_LOADING"
+export const SET_ERROR = "SET_ERROR"
+export const SET_HITS = "SET_HITS"

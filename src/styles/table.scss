@@ -1,0 +1,173 @@
+@import "./mixins";
+@import "./variables";
+@import "./resets";
+
+.table-container {
+}
+.parent {
+	margin-top: 40px;
+	background: #ffffff;
+	border: 1px solid rgba(33, 63, 125, 0.06);
+	box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 4px;
+	padding: 30px;
+	width: fit-content;
+	max-width: 100%;
+	overflow-x: scroll;
+}
+.table {
+	background: transparent;
+	border-collapse: collapse;
+	&__head {
+		padding-bottom: 15px;
+		div {
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(large);
+			font-size: 12px;
+			line-height: 14px;
+			text-transform: uppercase;
+			white-space: nowrap;
+			text-align: start;
+			color: $gray-main;
+			@include flex__justify-start(10px, row);
+			cursor: pointer;
+		}
+	}
+	&__body-row {
+		padding: 0 30px;
+
+		td {
+			border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+			padding: 22px 14px 22px 0;
+			white-space: nowrap;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(normal);
+			font-size: 14px;
+			line-height: 16px;
+			color: $gray-main;
+			&:nth-last-child(-n + 2) {
+				padding: 22px 0;
+			}
+			&:last-child {
+				padding: 22px 0;
+			}
+		}
+	}
+	&__chips {
+		border-radius: 100px;
+		padding: 6.5px 13px;
+		font-family: chooseFont("Work Sans");
+		font-weight: weight(regular);
+		font-size: 14px;
+		line-height: 16px;
+		text-align: center;
+		text-transform: capitalize;
+		&--inactive {
+			@extend .table__chips;
+			color: $gray-main;
+			background: rgba($gray-main, 0.06);
+		}
+		&--pending {
+			@extend .table__chips;
+			color: #e9b200;
+			background: rgba(#e9b200, 0.06);
+		}
+		&--blacklisted {
+			@extend .table__chips;
+			background: rgba(#e4033b, 0.06);
+			color: #e4033b;
+		}
+		&--active {
+			@extend .table__chips;
+			background: rgba(#39cd62, 0.06);
+			color: #39cd62;
+		}
+	}
+}
+.asc {
+	transform: rotate(180deg);
+}
+.actions {
+	@include flex__justify-between(0, row);
+	padding: 20px 0 48px;
+	&__info {
+		@include flex__justify-start(10px, row);
+		font-family: chooseFont("Work Sans");
+		font-size: 14px;
+		line-height: 16px;
+		p {
+			font-weight: weight(regular);
+			color: $gray-main;
+			font-family: inherit;
+			font-size: inherit;
+			line-height: inherit;
+		}
+		select {
+			padding: 7px 12px;
+			width: 80px;
+			font-weight: weight(medium);
+			font-size: inherit;
+			line-height: inherit;
+			background: rgba($gray-main, 0.1);
+			border-radius: 4px;
+			border: none;
+			font-family: inherit;
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			text-indent: 1px;
+			background-image: url(../assets//icons/arrow.svg);
+			background-repeat: no-repeat;
+			background-position: calc(100% - 10px) center;
+			text-overflow: "";
+			color: $secondary-color;
+			::-ms-expand {
+				display: none;
+			}
+		}
+	}
+	&__page {
+		@include flex__justify-start(10px, row);
+	}
+
+	&__btn-cont {
+		@include flex__justify-start(10px, row);
+	}
+	&__page-btns {
+		font-family: chooseFont("Work Sans");
+		font-weight: weight(medium);
+		font-size: 16px;
+		line-height: 19px;
+		color: rgba($gray-main, 0.6);
+		border: none;
+		outline: none;
+		border-radius: 4px;
+		background: none;
+		cursor: pointer;
+		&--current {
+			@extend .actions__page-btns;
+			color: $gray-main;
+		}
+	}
+
+	&__next-btn {
+		@include flex(row);
+		background: rgba($gray-main, 0.1);
+		border: none;
+		outline: none;
+		transform: rotate(90deg);
+		border-radius: 4px;
+		padding: 5px;
+		cursor: pointer;
+		svg {
+			fill: $secondary-color;
+		}
+		&:disabled {
+			cursor: not-allowed;
+		}
+		&:last-child {
+			@extend .actions__next-btn;
+			transform: rotate(-90deg);
+		}
+	}
+}
