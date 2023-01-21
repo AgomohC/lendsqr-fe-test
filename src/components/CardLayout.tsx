@@ -23,7 +23,7 @@ const cardInfo = [
 	},
 	{
 		icon: <UserSavings />,
-		text: "Users",
+		text: "Users with savings",
 		quantity: "102,453",
 	},
 ]
