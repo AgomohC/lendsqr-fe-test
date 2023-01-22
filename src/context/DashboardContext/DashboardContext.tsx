@@ -23,7 +23,7 @@ export const DashboardContext = createContext<DashboardContextType>({
 	...initialState,
 })
 
-const base_url = "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
+const base_url = import.meta.env.VITE_API_BASE_URL
 
 export const DashboardProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 	const [state, dispatch] = useReducer(DashboardReducer, initialState)

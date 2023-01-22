@@ -67,7 +67,16 @@ export type initialModalState = {
 	modalDetails?: User
 	modal_offset: { left: number; top: number } | undefined
 }
+export type initialUserState = {
+	pending: boolean
+	error: boolean
+	current_user: User
+	current_user_id: string
+	error_message: string
+}
 
 export type ModalContextType = initialModalState & actionCreatorType
 
 export type DashboardContextType = initialDashboardState & actionCreatorType
+
+export type SingleUserContextType = initialUserState & actionCreatorType

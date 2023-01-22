@@ -1,0 +1,237 @@
+@import "./mixins";
+@import "./variables";
+@import "./resets";
+
+.user-layout {
+	position: absolute;
+	left: 283px;
+	top: 108px;
+	padding: 0 60px 60px;
+	background: #fbfbfb;
+	width: calc(100% - 283px);
+	min-width: 960px;
+	min-height: 100vh;
+	height: max-content;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&__breadcrumb {
+		@include flex__justify-start(13px, row);
+		margin-top: 60px;
+		font-family: chooseFont("Work Sans");
+		font-size: 16px;
+		line-height: 19px;
+		color: $gray-main;
+		font-weight: weight(regular);
+		cursor: pointer;
+		width: fit-content;
+	}
+	&__heading {
+		margin-top: 32px;
+		@include flex__justify-between(0px, row);
+		h4 {
+			color: $secondary-color;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(medium);
+			font-size: 24px;
+			line-height: 28px;
+		}
+	}
+	&__btns {
+		@include flex__justify-start(20px, row);
+		button {
+			background: none;
+			border: none;
+			outline: none;
+			text-align: center;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(large);
+			font-size: 14px;
+			line-height: 16px;
+			border-radius: 8px;
+			padding: 12px 16px;
+			cursor: pointer;
+			&:first-child {
+				border: 1px solid #e4033b;
+				color: #e4033b;
+			}
+			&:last-child {
+				border: 1px solid $primary-color;
+				color: $primary-color;
+			}
+		}
+	}
+	&__card {
+		background: #ffffff;
+		border: 1px solid rgba(33, 63, 125, 0.06);
+		box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+		border-radius: 4px;
+		min-height: fit-content;
+		padding: 30px;
+		position: relative;
+		margin-top: 40px;
+
+		&:last-child {
+			margin-top: 30px;
+		}
+	}
+	&__profile {
+		@include flex__justify-start(0, row);
+		align-items: flex-start;
+		height: fit-content;
+		margin-bottom: 50px;
+		&--info {
+			height: 100px;
+			@include flex__justify-start(20px, row);
+			padding-right: 20px;
+			border-right: 1px solid rgba(#545f7d, 0.2);
+
+			img {
+				border-radius: 50%;
+				height: 100px;
+				aspect-ratio: 1/1;
+			}
+
+			&:last-child {
+				border-right: none;
+			}
+		}
+		&--status {
+			height: 100px;
+			@include flex(column);
+			align-items: flex-start;
+			padding: 20px;
+			border-right: 1px solid rgba(#545f7d, 0.2);
+			gap: 10px;
+			p {
+				font-family: chooseFont("Work Sans");
+				font-weight: weight(medium);
+				font-size: 14px;
+				line-height: 16px;
+				color: $gray-main;
+			}
+		}
+		&--bank {
+			min-height: 100px;
+			height: 100%;
+			@include flex(column);
+			gap: 12px;
+			align-items: flex-start;
+			padding: 20px;
+			p {
+				font-family: chooseFont("Work Sans");
+				&:first-child {
+					font-weight: weight(medium);
+					font-size: 22px;
+					line-height: 26px;
+					color: $secondary-color;
+				}
+				&:last-child {
+					font-weight: weight(regular);
+					font-size: 14px;
+					line-height: 16px;
+					color: $gray-main;
+					text-transform: capitalize;
+				}
+			}
+		}
+		&-text {
+			@include flex__justify-start(10px, column);
+			align-items: flex-start;
+			p {
+				font-family: chooseFont("Work Sans");
+				&:first-child {
+					font-weight: weight(medium);
+					font-size: 22px;
+					line-height: 26px;
+					color: $secondary-color;
+				}
+				&:last-child {
+					font-weight: weight(regular);
+					font-size: 14px;
+					line-height: 16px;
+					color: $gray-main;
+				}
+			}
+		}
+	}
+
+	&__tabs-cont {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		overflow-y: hidden;
+		overflow-x: auto;
+	}
+	&__tabs {
+		max-width: 100%;
+		width: 100%;
+		@include flex__justify-around(0px, row);
+		&-links {
+			padding: 0 0 10px;
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(regular);
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+			color: rgba(0, 0, 0, 0.8);
+			white-space: nowrap;
+			cursor: pointer;
+			&--active {
+				color: $primary-color;
+				@extend .user-layout__tabs-links;
+				padding: 0 25px 10px;
+				border-bottom: 2px solid $primary-color;
+			}
+		}
+	}
+	&__info {
+		border-bottom: 1px solid rgba(#213f7d, 0.1);
+		@include flex__justify-start(30px, column);
+		align-items: flex-start;
+		padding-top: 30px;
+		&:last-child {
+			border-bottom: none;
+		}
+		&:first-child {
+			padding-top: 0;
+		}
+		h5 {
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(medium);
+			font-size: 16px;
+			line-height: 19px;
+			color: $secondary-color;
+			text-transform: capitalize;
+		}
+	}
+	&__details {
+		flex-wrap: wrap;
+		padding-bottom: 30px;
+		@include flex__justify-start(0px, row);
+		row-gap: 30px;
+		column-gap: 100px;
+		h6 {
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(regular);
+			font-size: 12px;
+			line-height: 14px;
+			text-transform: uppercase;
+			color: $gray-main;
+		}
+		p {
+			font-family: chooseFont("Work Sans");
+			font-weight: weight(medium);
+			color: $gray-main;
+			margin-top: 8px;
+			font-size: 16px;
+			line-height: 19px;
+			text-transform: capitalize;
+		}
+	}
+}
