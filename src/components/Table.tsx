@@ -16,12 +16,12 @@ import {
 	ColumnDef,
 } from "@tanstack/react-table"
 import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils"
-// import LoadingSpinner from "./Loader"
 import { usePagination } from "../hooks/usePaginate"
 import { ReactComponent as More } from "../assets/icons/more.svg"
 import { ReactComponent as Sorter } from "../assets/icons/sorter.svg"
 import { ReactComponent as Arrow } from "../assets/icons/arrow.svg"
 import { useDashboardContext } from "../context/DashboardContext/DashboardContext"
+import { useModalContext } from "../context/ModalContext/ModalContext"
 
 declare module "@tanstack/table-core" {
 	interface FilterFns {
@@ -44,7 +44,7 @@ export type TableProps = {
 	data: any[]
 	tableActionButtons?: {
 		label: string | JSX.Element
-		clickHandler: (e: React.MouseEvent<HTMLElement>) => void
+		clickHandler: React.MouseEventHandler<SVGSVGElement>
 	}[][]
 	extraElements?: {
 		content: string
@@ -52,6 +52,7 @@ export type TableProps = {
 	}[]
 	extraElementName?: string
 	pending?: boolean
+	hitsPerPage: number
 }
 
 const CustomTable = ({
@@ -60,10 +61,12 @@ const CustomTable = ({
 	extraElements,
 	pending,
 	extraElementName,
+	hitsPerPage,
 }: TableProps) => {
 	const columnHelper = createColumnHelper<any>()
 	const [sorting, setSorting] = useState<SortingState>([])
-	const { hits_per_page, setHits } = useDashboardContext()
+	const { setHits } = useDashboardContext()
+	const { openModal } = useModalContext()
 
 	const tableData = useMemo(() => [...data], [data])
 	const columns = useMemo<ColumnDef<any>[]>(
@@ -113,7 +116,13 @@ const CustomTable = ({
 						id: "select",
 						header: "",
 						cell: ({ row }) =>
-							tableActionButtons[row.index]?.map(btn => <More key={row.index} />),
+							tableActionButtons[row.index]?.map(btn => (
+								<More
+									key={row.index}
+									onClick={btn.clickHandler}
+									className='table__body-btns'
+								/>
+							)),
 					},
 				],
 				[tableActionButtons, data]
@@ -144,8 +153,8 @@ const CustomTable = ({
 		getFacetedMinMaxValues: getFacetedMinMaxValues(),
 	})
 	useLayoutEffect(() => {
-		table.setPageSize(hits_per_page)
-	}, [hits_per_page])
+		table.setPageSize(hitsPerPage)
+	}, [hitsPerPage])
 
 	const onHitsChange = (hits: number) => {
 		setHits(hits)
@@ -181,7 +190,14 @@ const CustomTable = ({
 				<>
 					<div className='parent'>
 						<table className='table'>
-							<thead>
+							<thead
+								onClick={event =>
+									openModal({
+										modalType: "user_filters",
+										modal_offset: { top: event.clientY, left: event.clientX },
+									})
+								}
+							>
 								{table.getHeaderGroups().map(headerGroup => (
 									<tr key={headerGroup.id}>
 										{headerGroup.headers.map(header => (
@@ -236,7 +252,7 @@ const CustomTable = ({
 								name=''
 								id=''
 								onChange={e => onHitsChange(+e.target.value)}
-								defaultValue='10'
+								defaultValue={hitsPerPage}
 							>
 								<option value='10'>10</option>
 								<option value='20'>20</option>

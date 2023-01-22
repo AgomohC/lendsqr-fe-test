@@ -1,11 +1,11 @@
 import type { initialDashboardState, action, User } from "../context-types"
 import {
 	SET_ALL_USERS,
-	SET_SINGLE_USER,
 	SET_LOADING,
 	STOP_LOADING,
 	SET_ERROR,
 	SET_HITS,
+	CHANGE_USER_STATUS,
 } from "../actions"
 
 export const DashboardReducer = (
@@ -24,9 +24,20 @@ export const DashboardReducer = (
 				single_user.status = "inactive"
 				return single_user
 			})
+			localStorage.setItem("users", JSON.stringify(users))
 			return { ...state, users }
 		case SET_HITS:
 			return { ...state, hits_per_page: action.payload }
+		case CHANGE_USER_STATUS:
+			let user = state.users.findIndex(user => user.id === action.payload?.id)
+			if (user < 0) {
+				return { ...state }
+			}
+			const new_users = [...state.users]
+			new_users[user].status = action.payload.new_status
+			localStorage.setItem("users", JSON.stringify(new_users))
+			return { ...state, users: new_users }
+
 		default:
 			return state
 	}

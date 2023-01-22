@@ -3,15 +3,20 @@ import "../styles/dashboard.scss"
 import CardLayout from "../components/CardLayout"
 import { parseDateTime } from "../utils/parse-date-time"
 import { useMemo, useEffect } from "react"
-import { ReactComponent as Dots } from "../assets/icons/dots-menu.svg"
 import type { User } from "../context/context-types"
 import { useDashboardContext } from "../context/DashboardContext/DashboardContext"
-
-const statuses = ["active", "blacklisted", "inactive", "pending"]
+import { useModalContext } from "../context/ModalContext/ModalContext"
 
 const Dashboard = () => {
-	const { error, pending, error_message, users: data, fetchAllUsers } = useDashboardContext()
-
+	const {
+		error,
+		pending,
+		error_message,
+		users: data,
+		fetchAllUsers,
+		hits_per_page,
+	} = useDashboardContext()
+	const { openModal } = useModalContext()
 	useEffect(() => {
 		fetchAllUsers()
 	}, [])
@@ -48,15 +53,20 @@ const Dashboard = () => {
 	let action_buttons:
 		| {
 				label: string | JSX.Element
-				clickHandler: (e: React.MouseEvent<HTMLElement>) => void
+				clickHandler: React.MouseEventHandler<SVGSVGElement>
 		  }[][]
 		| undefined = useMemo(
 		() =>
-			users.map(user => [
+			data?.map(user => [
 				{
-					label: <Dots />,
-					clickHandler: (e: React.MouseEvent<HTMLElement>) => {
-						e.stopPropagation()
+					label: user.userName,
+					clickHandler: event => {
+						event.stopPropagation()
+						openModal({
+							user,
+							modalType: "user_details",
+							modal_offset: { top: event.clientY, left: event.clientX },
+						})
 					},
 				},
 			]),
@@ -72,6 +82,7 @@ const Dashboard = () => {
 				extraElementName={"status"}
 				extraElements={extra_elements}
 				tableActionButtons={action_buttons}
+				hitsPerPage={hits_per_page}
 			/>
 		</div>
 	)

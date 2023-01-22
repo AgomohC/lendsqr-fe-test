@@ -3,6 +3,7 @@ import Login from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
 import SingleUser from "./pages/SingleUser"
 import Layout from "./components/Layout"
+import "./styles/index.scss"
 
 const App = () => {
 	return (

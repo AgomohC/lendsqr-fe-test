@@ -56,4 +56,18 @@ export type initialDashboardState = {
 	hits_per_page: number
 }
 
-export type ContextType = initialDashboardState & actionCreatorType
+export enum modal_types {
+	user_details = "user_details",
+	user_filters = "user_filters",
+}
+
+export type initialModalState = {
+	isModalOpen: boolean
+	modalType: modal_types | undefined
+	modalDetails?: User
+	modal_offset: { left: number; top: number } | undefined
+}
+
+export type ModalContextType = initialModalState & actionCreatorType
+
+export type DashboardContextType = initialDashboardState & actionCreatorType

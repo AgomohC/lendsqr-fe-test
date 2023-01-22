@@ -10,8 +10,8 @@
 	background: #fbfbfb;
 	width: calc(100% - 283px);
 	min-width: 960px;
-	height: fit-content;
 	min-height: 100vh;
+	height: max-content;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	&::-webkit-scrollbar {
