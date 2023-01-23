@@ -9,7 +9,6 @@
 	padding: 0 60px;
 	background: #fbfbfb;
 	width: calc(100% - 283px);
-	min-width: 960px;
 	min-height: 100vh;
 	height: max-content;
 	-ms-overflow-style: none;
@@ -30,9 +29,8 @@
 @media screen and (max-width: 768px) {
 	.layout {
 		top: 84px;
-		left: 40px;
+		left: 60px;
 		padding: 0 30px;
-		&__heading {
-		}
+		width: calc(100% - 60px);
 	}
 }
