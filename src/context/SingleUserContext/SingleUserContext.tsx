@@ -3,6 +3,7 @@ import { SingleUserReducer } from "./SingleUserReducer"
 import type { initialUserState, SingleUserContextType } from "../context-types"
 import { SET_SINGLE_USER, SET_LOADING, STOP_LOADING, SET_ERROR } from "../actions"
 import axios, { AxiosError } from "axios"
+import { getLocalItem } from "../../utils/getLocalItem"
 const initialState: initialUserState = {
 	pending: false,
 	error_message: "",
@@ -59,13 +60,16 @@ export const SingleUserProvider = ({ children }: { children: JSX.Element | JSX.E
 	const [state, dispatch] = useReducer(SingleUserReducer, initialState)
 
 	const getSingleUser = async (id: string) => {
-		dispatch({ type: SET_LOADING })
-		if (state.current_user_id === id) {
-			dispatch({ type: STOP_LOADING })
+		const data = getLocalItem(id)
+		if (data) {
+			dispatch({ type: SET_SINGLE_USER, payload: data })
 			return
 		}
+		dispatch({ type: SET_LOADING })
+
 		try {
 			const { data } = await axios(`${base_url}/${id}`)
+			localStorage.setItem(id, JSON.stringify(data))
 			dispatch({ type: SET_SINGLE_USER, payload: data })
 			dispatch({ type: STOP_LOADING })
 		} catch (error) {

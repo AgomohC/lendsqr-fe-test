@@ -6,10 +6,11 @@ import { ReactComponent as BackButton } from "../assets/icons/back.svg"
 import { ReactComponent as Star } from "../assets/icons/star.svg"
 import { useDashboardContext } from "../context/DashboardContext/DashboardContext"
 import { useNavigate } from "react-router-dom"
+import SkeletonLoader from "../components/SkeletonLoader"
 
 const SingleUser = () => {
 	const { id } = useParams()
-	const { getSingleUser, clearUser, current_user } = useSingleUserContext()
+	const { getSingleUser, clearUser, current_user, pending } = useSingleUserContext()
 	const navigate = useNavigate()
 	const { changeUserStatus } = useDashboardContext()
 	const {
@@ -51,13 +52,35 @@ const SingleUser = () => {
 			<div className='user-layout__card'>
 				<div className='user-layout__profile'>
 					<div className='user-layout__profile--info'>
-						<img
-							src={profile?.avatar}
-							alt={userName}
-						/>
+						{pending ? (
+							<SkeletonLoader
+								style={{ width: 50, height: 50 }}
+								shape='circle'
+							/>
+						) : (
+							<img
+								src={profile?.avatar}
+								alt={userName}
+							/>
+						)}
 						<div className='user-layout__profile-text'>
-							<p>{profile?.firstName + " " + profile?.lastName}</p>
-							<p>{accountNumber}</p>
+							{pending ? (
+								<>
+									<SkeletonLoader
+										style={{ width: 140, height: 14 }}
+										shape='rectangle'
+									/>
+									<SkeletonLoader
+										style={{ width: 140, height: 14 }}
+										shape='rectangle'
+									/>
+								</>
+							) : (
+								<>
+									<p>{profile?.firstName + " " + profile?.lastName}</p>
+									<p>{accountNumber}</p>
+								</>
+							)}
 						</div>
 					</div>
 					<div className='user-layout__profile--status'>
@@ -69,10 +92,28 @@ const SingleUser = () => {
 						</div>
 					</div>
 					<div className='user-layout__profile--bank'>
-						<p>#{accountBalance}</p>
-						<p className='user-layout__profile-info'>
-							{accountNumber} / {orgName.split("-").join(" ")}
-						</p>
+						{pending ? (
+							<>
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							</>
+						) : (
+							<p>#{accountBalance}</p>
+						)}
+						{pending ? (
+							<>
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							</>
+						) : (
+							<p className='user-layout__profile-info'>
+								{accountNumber} / {orgName?.split("-").join(" ")}
+							</p>
+						)}
 					</div>
 				</div>
 				<div className='user-layout__tabs-cont'>
@@ -92,35 +133,91 @@ const SingleUser = () => {
 					<div className='user-layout__details'>
 						<div>
 							<h6>full name</h6>
-							<p>{profile?.firstName + " " + profile?.lastName}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{profile?.firstName + " " + profile?.lastName}</p>
+							)}
 						</div>
 						<div>
 							<h6>phone number</h6>
-							<p>{profile?.phoneNumber}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{profile?.phoneNumber}</p>
+							)}
 						</div>
 						<div>
 							<h6>email address</h6>
-							<p>{email}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{email}</p>
+							)}
 						</div>
 						<div>
 							<h6>bvn</h6>
-							<p>{profile?.bvn}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{profile?.bvn}</p>
+							)}
 						</div>
 						<div>
 							<h6>gender</h6>
-							<p>{profile?.gender}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{profile?.gender}</p>
+							)}
 						</div>
 						<div>
 							<h6>marital status</h6>
-							<p>Single</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{"Single"}</p>
+							)}
 						</div>
 						<div>
 							<h6>children</h6>
-							<p>none</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{"none"}</p>
+							)}
 						</div>
 						<div>
 							<h6>type of apartment</h6>
-							<p>{profile?.address}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{profile?.address}</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -130,31 +227,82 @@ const SingleUser = () => {
 					<div className='user-layout__details'>
 						<div>
 							<h6>level of education</h6>
-							<p>{education?.level}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.level}</p>
+							)}
 						</div>
 						<div>
 							<h6>employment status</h6>
-							<p>{education?.employmentStatus}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.employmentStatus}</p>
+							)}
 						</div>
 						<div>
 							<h6>sector of employment</h6>
-							<p>{education?.sector}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.sector}</p>
+							)}
 						</div>
 						<div>
 							<h6>duration of employment</h6>
-							<p>{education?.duration}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.duration}</p>
+							)}
 						</div>
 						<div>
 							<h6>office email</h6>
-							<p>{education?.officeEmail}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.officeEmail}</p>
+							)}
 						</div>
 						<div>
 							<h6>monthly income</h6>
-							<p>{`${education?.monthlyIncome[0]} - ${education?.monthlyIncome[1]}`}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>
+									{education?.monthlyIncome[0]} - {education?.monthlyIncome[1]}
+								</p>
+							)}
 						</div>
 						<div>
 							<h6>loan repayment</h6>
-							<p>{education?.loanRepayment}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{education?.loanRepayment}</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -164,17 +312,38 @@ const SingleUser = () => {
 					<div className='user-layout__details'>
 						<div>
 							<h6>twitter</h6>
-							<p>{socials?.twitter}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{socials?.twitter}</p>
+							)}
 						</div>
 
 						<div>
 							<h6>facebook</h6>
-							<p>{socials?.facebook}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{socials?.facebook}</p>
+							)}
 						</div>
 
 						<div>
 							<h6>instagram</h6>
-							<p>{socials?.instagram}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{socials?.instagram}</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -184,22 +353,50 @@ const SingleUser = () => {
 					<div className='user-layout__details'>
 						<div>
 							<h6>full name</h6>
-							<p>{guarantor?.firstName + " " + guarantor?.lastName}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{guarantor?.firstName + " " + guarantor?.lastName}</p>
+							)}
 						</div>
 
 						<div>
 							<h6>phone number</h6>
-							<p>{guarantor?.phoneNumber}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{guarantor?.phoneNumber}</p>
+							)}
 						</div>
 
 						<div>
 							<h6>address</h6>
-							<p>{guarantor?.address}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{guarantor?.address}</p>
+							)}
 						</div>
 
 						<div>
 							<h6>gender</h6>
-							<p>{guarantor?.gender}</p>
+							{pending ? (
+								<SkeletonLoader
+									style={{ width: 140, height: 14 }}
+									shape='rectangle'
+								/>
+							) : (
+								<p>{guarantor?.gender}</p>
+							)}
 						</div>
 					</div>
 				</div>

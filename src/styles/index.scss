@@ -8,3 +8,29 @@ html {
 body {
 	background: #fbfbfb;
 }
+.loader {
+	background: rgba($gray-main, 0.2);
+	animation-name: skeletonAnimate;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+	display: inline-block;
+	border-radius: 4px;
+	animation-iteration-count: infinite;
+	max-width: 100% !important;
+	&--circle {
+		@extend .loader;
+		border-radius: 50%;
+		aspect-ratio: 1/1;
+	}
+}
+@keyframes skeletonAnimate {
+	0% {
+		opacity: 0.8;
+	}
+	50% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}

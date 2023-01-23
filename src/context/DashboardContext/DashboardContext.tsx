@@ -49,6 +49,11 @@ export const DashboardProvider = ({ children }: { children: JSX.Element | JSX.El
 		}
 	}
 	const changeUserStatus = (details: { new_status: string; id: string }) => {
+		const data = getLocalItem(details?.id)
+		if (data) {
+			data.status = details.new_status
+			localStorage.setItem(details.id, JSON.stringify(data))
+		}
 		dispatch({ type: CHANGE_USER_STATUS, payload: details })
 	}
 

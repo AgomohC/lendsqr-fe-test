@@ -12,6 +12,8 @@ export const SingleUserReducer = (
 		case SET_ERROR:
 			return { ...state, error: true, pending: false, error_message: action.payload }
 		case SET_SINGLE_USER:
+			// console.log(action.payload)
+
 			return { ...state, current_user: action.payload }
 		default:
 			return state

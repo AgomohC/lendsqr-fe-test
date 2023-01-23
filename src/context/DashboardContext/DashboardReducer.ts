@@ -33,8 +33,11 @@ export const DashboardReducer = (
 			if (user < 0) {
 				return { ...state }
 			}
+
 			const new_users = [...state.users]
 			new_users[user].status = action.payload.new_status
+			localStorage.setItem(action.payload.id, JSON.stringify(new_users[user]))
+
 			localStorage.setItem("users", JSON.stringify(new_users))
 			return { ...state, users: new_users }
 
