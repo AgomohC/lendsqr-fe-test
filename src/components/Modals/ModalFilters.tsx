@@ -1,5 +1,3 @@
-import { useDashboardContext } from "../../context/DashboardContext/DashboardContext"
-import { useModalContext } from "../../context/ModalContext/ModalContext"
 import "../../styles/modal.scss"
 import Input from "../Input"
 

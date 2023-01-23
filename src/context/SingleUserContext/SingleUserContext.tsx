@@ -1,5 +1,4 @@
 import { useContext, useReducer, createContext } from "react"
-import type { action } from "../context-types"
 import { SingleUserReducer } from "./SingleUserReducer"
 import type { initialUserState, SingleUserContextType } from "../context-types"
 import { SET_SINGLE_USER, SET_LOADING, STOP_LOADING, SET_ERROR } from "../actions"

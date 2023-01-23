@@ -1,8 +1,6 @@
 import Input from "../components/Input"
 import { useNavigate, Link } from "react-router-dom"
 import "../styles/login.scss"
-
-/// <reference types="vite-plugin-svgr/client" />
 import { ReactComponent as Logo } from "../assets/icons/logo.svg"
 import banner from "../assets/banner.svg"
 
