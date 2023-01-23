@@ -18,6 +18,7 @@ import reports from "../assets/icons/reports.svg"
 import preferences from "../assets/icons/preferences.svg"
 import pricing from "../assets/icons/pricing.svg"
 import logs from "../assets/icons/audit-logs.svg"
+import tire from "../assets/icons/tire.svg"
 
 type Route = { icon: string; link: string; name: string }
 export type RouteGroups = { name: string; routes: Route[] }
@@ -88,6 +89,7 @@ export const routes: RouteGroups[] = [
 			{ icon: preferences, link: "#", name: "Preferences" },
 			{ icon: pricing, link: "#", name: "Fees and Pricing" },
 			{ icon: logs, link: "#", name: "Audit Logs" },
+			{ icon: tire, link: "#", name: "System Messages" },
 		],
 	},
 ]

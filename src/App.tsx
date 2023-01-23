@@ -26,7 +26,7 @@ const App = () => {
 				/>
 				<Route
 					element={<SingleUser />}
-					path={":id"}
+					path={"user/:id"}
 				></Route>
 			</Route>
 		</Routes>

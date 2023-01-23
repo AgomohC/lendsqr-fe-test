@@ -16,7 +16,7 @@ const ModalActions = () => {
 			<button
 				onClick={() => {
 					closeModal()
-					navigate(`/dashboard/${modalDetails?.id}`)
+					navigate(`/dashboard/user/${modalDetails?.id}`)
 				}}
 			>
 				<Details /> <p>View Details</p>

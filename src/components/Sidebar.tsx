@@ -5,9 +5,17 @@ import home from "../assets/icons/home.svg"
 import { ReactComponent as Arrow } from "../assets/icons/arrow.svg"
 import "../styles/routes.scss"
 import { Link, useLocation } from "react-router-dom"
-import { ReactComponent as Logo } from "../assets/icons/logo.svg"
+import logout from "../assets/icons/sign-out.svg"
 
-const Links = ({ links, location }: { links: RouteGroups; location: string }) => {
+const Links = ({
+	links,
+	location,
+	showSysMessage,
+}: {
+	links: RouteGroups
+	location: string
+	showSysMessage: boolean
+}) => {
 	const { name, routes: groups } = links
 
 	return (
@@ -16,6 +24,9 @@ const Links = ({ links, location }: { links: RouteGroups; location: string }) =>
 			<div className='aside__links'>
 				{groups.map(route => {
 					const { name, link, icon } = route
+					if (!showSysMessage && name == "System Messages") {
+						return null
+					}
 					return (
 						<Link
 							to={link}
@@ -38,6 +49,7 @@ const Links = ({ links, location }: { links: RouteGroups; location: string }) =>
 
 const Sidebar = () => {
 	const { pathname } = useLocation()
+	const isUser = pathname.match(/user/gi)
 
 	return (
 		<aside className='aside'>
@@ -62,15 +74,33 @@ const Sidebar = () => {
 				/>
 				<h1>Dashboard</h1>
 			</div>
-			{routes.map((route, idx) => {
+			{routes.map(route => {
 				return (
 					<Links
 						links={route}
 						key={route.name}
 						location={pathname}
+						showSysMessage={!!isUser}
 					/>
 				)
 			})}
+			<div className='logout'>
+				{isUser ? (
+					<div>
+						<Link
+							to={"#"}
+							className={`aside__link`}
+						>
+							<img
+								src={logout}
+								alt=''
+							/>
+							<h3>Logout</h3>
+						</Link>
+					</div>
+				) : null}
+				<p>v1.2.0</p>
+			</div>
 		</aside>
 	)
 }

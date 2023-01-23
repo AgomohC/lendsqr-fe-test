@@ -9,7 +9,7 @@
 	padding: 0 60px 60px;
 	background: #fbfbfb;
 	width: calc(100% - 283px);
-	min-width: 960px;
+	// min-width: 960px;
 	min-height: 100vh;
 	height: max-content;
 	-ms-overflow-style: none;
@@ -27,16 +27,20 @@
 		font-weight: weight(regular);
 		cursor: pointer;
 		width: fit-content;
+		white-space: nowrap;
 	}
 	&__heading {
 		margin-top: 32px;
 		@include flex__justify-between(0px, row);
+		flex-wrap: wrap;
+		row-gap: 16px;
 		h4 {
 			color: $secondary-color;
 			font-family: chooseFont("Work Sans");
 			font-weight: weight(medium);
 			font-size: 24px;
 			line-height: 28px;
+			white-space: nowrap;
 		}
 	}
 	&__btns {
@@ -232,6 +236,116 @@
 			font-size: 16px;
 			line-height: 19px;
 			text-transform: capitalize;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.user-layout {
+		top: 84px;
+		left: 60px;
+		width: calc(100% - 60px);
+	}
+}
+
+@media screen and (max-width: 1080px) {
+	.user-layout {
+		padding: 0 30px 30px;
+		&__heading {
+			h4 {
+				font-size: 18px;
+				line-height: 20 px;
+			}
+		}
+		&__btns {
+			button {
+				letter-spacing: 0.05em;
+				font-weight: weight(medium);
+				font-size: 12px;
+				line-height: 12px;
+				padding: 10px 10px;
+			}
+		}
+		&__card {
+			padding: 20px;
+			margin-top: 30px;
+			&:last-child {
+				margin-top: 20px;
+			}
+		}
+		&__profile {
+			margin-bottom: 30px;
+			flex-wrap: wrap;
+			&--info {
+				img {
+					height: 50px;
+				}
+				width: 100%;
+				border-bottom: 1px solid rgba(#545f7d, 0.2);
+				border-right: none;
+				padding-bottom: 30px;
+			}
+			&--status {
+				width: 100%;
+				padding: 30px 0;
+				border-bottom: 1px solid rgba(#545f7d, 0.2);
+				border-right: none;
+				p {
+					font-weight: weight(regular);
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+			&--bank {
+				width: 100%;
+				padding: 30px 0;
+				p {
+					font-size: 20px;
+					line-height: 24px;
+				}
+				&:last-child {
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+		}
+		&-text {
+			p {
+				&:first-child {
+					font-size: 22px;
+					line-height: 24px;
+				}
+				&:last-child {
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+		}
+		&__tabs {
+			@include flex__justify-start(20px, row);
+		}
+
+		&__info {
+			flex-wrap: wrap;
+			padding-top: 20px;
+			gap: 20px;
+		}
+		&__details {
+			padding-bottom: 20px;
+			max-width: 100%;
+			row-gap: 20px;
+			div {
+				max-width: 100%;
+			}
+			h6 {
+				max-width: 100%;
+			}
+			p {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 100%;
+				white-space: nowrap;
+			}
 		}
 	}
 }
