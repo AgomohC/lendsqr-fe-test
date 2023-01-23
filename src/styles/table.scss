@@ -2,8 +2,6 @@
 @import "./variables";
 @import "./resets";
 
-.table-container {
-}
 .parent {
 	margin-top: 40px;
 	background: #ffffff;
@@ -92,6 +90,8 @@
 }
 .actions {
 	@include flex__justify-between(0, row);
+	flex-wrap: wrap;
+	row-gap: 12px;
 	padding: 20px 0 48px;
 	&__info {
 		@include flex__justify-start(10px, row);
