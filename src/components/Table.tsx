@@ -83,9 +83,9 @@ const CustomTable = ({
 				: [],
 		[data]
 	)
-	const extraColumns = extraElements
-		? useMemo<ColumnDef<any>[]>(
-				() => [
+	const extraColumns = useMemo<ColumnDef<any>[]>(() => {
+		return extraElements
+			? [
 					{
 						id: extraElementName ? extraElementName?.split(" ")?.join("") : "",
 						header: extraElementName,
@@ -105,13 +105,12 @@ const CustomTable = ({
 							)
 						},
 					},
-				],
-				[data, extraElements]
-		  )
-		: useMemo(() => [], [data, extraElements])
-	const actionColumns = tableActionButtons
-		? useMemo<ColumnDef<string>[]>(
-				() => [
+			  ]
+			: []
+	}, [data, extraElements])
+	const actionColumns = useMemo<ColumnDef<string>[]>(() => {
+		return tableActionButtons
+			? [
 					{
 						id: "select",
 						header: "",
@@ -124,10 +123,9 @@ const CustomTable = ({
 								/>
 							)),
 					},
-				],
-				[tableActionButtons, data]
-		  )
-		: useMemo(() => [], [data, tableActionButtons])
+			  ]
+			: []
+	}, [tableActionButtons, data])
 
 	const finalColumns = useMemo(
 		() => [...columns, ...extraColumns, ...actionColumns],
